@@ -1,15 +1,10 @@
 import 'dart:math';
 
-void checkNguyenTo(int number, List<int> listNguyenTo) {
-  int count = 0;
-
+bool checkNguyenTo(int number) {
   for (int i = 2; i <= sqrt(number); i++) {
-    if (number % i == 0) count++;
+    if (number % i == 0) return false;
   }
-
-  if (count == 0) {
-    listNguyenTo.add(number);
-  }
+  return true;
 }
 
 void main() {
@@ -17,7 +12,7 @@ void main() {
   List<int> listNguyenTo = [];
 
   for (int i = 2; i <= n; i++) {
-    checkNguyenTo(i, listNguyenTo);
+    if (checkNguyenTo(i)) listNguyenTo.add(i);
   }
 
   print(listNguyenTo);
